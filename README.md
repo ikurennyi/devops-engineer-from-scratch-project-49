@@ -13,16 +13,23 @@
 
 ## Установка
 
-<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
 
 ```bash
 git clone https://github.com/ikurennyi/devops-engineer-from-scratch-project-49.git
 cd devops-engineer-from-scratch-project-49
 ```
 
+1. Run `make install`
+2. If you want ot play:
+    1. `brain-even` - run `make brain-even`
+    2. `brain-games` - run `make brain-games`
+* Check `Makefile` for all possible commands
+* Check [Asciinema](#asciinema) to see demos.
+
 ## Использование
 
-<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
+## <a id="asciinema">Asciinema demos</a>:
+- [brain-even](https://asciinema.org/a/AkY6B2e9ALNYQLVR)
 
 ---
 
