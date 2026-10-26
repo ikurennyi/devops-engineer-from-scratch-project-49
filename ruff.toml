@@ -1,0 +1,6 @@
+line-length = 80
+target-version = "py315"
+
+[lint]
+# preview = true
+select = ["B", "E", "F", "I", "C90", "UP", "SIM"]
