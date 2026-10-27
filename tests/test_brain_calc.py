@@ -60,7 +60,11 @@ def test_main_non_integer_answer_exits_early(monkeypatch, capsys):
         "string",
         lambda _prompt: next(names),
     )
-    monkeypatch.setattr(brain_calc, "read_answer_as_int", lambda: "not-a-number")
+    monkeypatch.setattr(
+        brain_calc,
+        "read_answer_as_int",
+        lambda: "not-a-number",
+    )
     monkeypatch.setattr(brain_calc, "get_target_value", lambda: 5)
 
     main()

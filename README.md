@@ -32,6 +32,7 @@ cd devops-engineer-from-scratch-project-49
 - [brain-even](https://asciinema.org/a/AkY6B2e9ALNYQLVR)
 - [brain-calc](https://asciinema.org/a/r9GkWdGloRM0PjWk)
 - [brain-gcd](https://asciinema.org/a/XaZv15uZ2YcihCDb)
+- [brain-progression](https://asciinema.org/a/oIKH6wTipkzACXM3)
 
 ---
 
