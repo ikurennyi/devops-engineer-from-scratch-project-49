@@ -11,4 +11,4 @@ select = ["B", "E", "F", "I", "C90", "UP", "SIM", "S", "FURB", "RUF"]
 # assert в тестах это норма pytest
 "tests/**" = ["assert"]
 # random в играх — не криптография
-"brain_games/scripts/games/*.py" = ["S311"]
+"brain_games/scripts/**.py" = ["S311"]

@@ -1,3 +1,4 @@
+import random
 from typing import cast
 
 import prompt
@@ -13,6 +14,18 @@ def greeting(question: str | None = None) -> str:
     if question is not None:
         print(question)
     return user_name
+
+
+def number_in_range(start=0, end=100) -> int:
+    return random.randrange(start, end)
+
+
+def read_answer_as_int():
+    user_input = input("Your answer: ")
+    try:
+        return int(user_input)
+    except ValueError:
+        return user_input
 
 
 def run(question: str, get_target_value, read_answer) -> None:

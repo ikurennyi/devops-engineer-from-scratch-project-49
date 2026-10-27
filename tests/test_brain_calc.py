@@ -4,12 +4,10 @@ from brain_games.scripts.games.brain_calc import get_target_value, main
 
 
 def test_get_target_value_addition(monkeypatch, capsys):
-    values = iter([4, 5])
-    monkeypatch.setattr(
-        brain_calc,
-        "number_in_range",
-        lambda end=10: next(values),
-    )
+    def fake_range(start=0, end=100):
+        return 4 if end == 100 else 5
+
+    monkeypatch.setattr(brain_calc, "number_in_range", fake_range)
     monkeypatch.setattr(brain_calc.random, "choice", lambda _: "+")
 
     assert get_target_value() == 9
@@ -27,7 +25,7 @@ def test_main_three_correct_answers(monkeypatch, capsys):
     )
     monkeypatch.setattr(
         brain_calc,
-        "read_answer",
+        "read_answer_as_int",
         lambda: next(answers),
     )
     monkeypatch.setattr(brain_calc, "get_target_value", lambda: 9)
@@ -45,7 +43,7 @@ def test_main_wrong_answer_exits_early(monkeypatch, capsys):
         "string",
         lambda _prompt: next(names),
     )
-    monkeypatch.setattr(brain_calc, "read_answer", lambda: 0)
+    monkeypatch.setattr(brain_calc, "read_answer_as_int", lambda: 0)
     monkeypatch.setattr(brain_calc, "get_target_value", lambda: 5)
 
     main()
@@ -62,7 +60,7 @@ def test_main_non_integer_answer_exits_early(monkeypatch, capsys):
         "string",
         lambda _prompt: next(names),
     )
-    monkeypatch.setattr(brain_calc, "read_answer", lambda: "not-a-number")
+    monkeypatch.setattr(brain_calc, "read_answer_as_int", lambda: "not-a-number")
     monkeypatch.setattr(brain_calc, "get_target_value", lambda: 5)
 
     main()

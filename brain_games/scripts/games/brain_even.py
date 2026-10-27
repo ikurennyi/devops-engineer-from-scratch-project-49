@@ -1,16 +1,11 @@
-import random
 
 import prompt
 
-from brain_games.scripts.engine import run
+from brain_games.scripts.engine import number_in_range, run
 
 
 def is_even_string(num: int) -> str:
     return "yes" if num % 2 == 0 else "no"
-
-
-def number_in_range() -> int:
-    return random.randrange(0, 100)
 
 
 def get_target_value():
