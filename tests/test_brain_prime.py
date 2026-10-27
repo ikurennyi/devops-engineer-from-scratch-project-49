@@ -1,5 +1,5 @@
-import brain_games.scripts.games.brain_prime as brain_prime
-from brain_games.scripts.games.brain_prime import (
+import brain_games.games.brain_prime as brain_prime
+from brain_games.games.brain_prime import (
     is_prime,
     is_prime_string,
     main,

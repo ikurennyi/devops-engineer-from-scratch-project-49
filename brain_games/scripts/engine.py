@@ -47,4 +47,4 @@ def run(question: str, get_target_value, read_answer) -> None:
             print(f"Let's try again, {user_name}!")
             return
 
-    print(f"Congratulations, {user_name}")
+    print(f"Congratulations, {user_name}!")

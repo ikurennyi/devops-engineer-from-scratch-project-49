@@ -1,6 +1,6 @@
+import brain_games.games.brain_gcd as brain_gcd
 import brain_games.scripts.engine as engine
-import brain_games.scripts.games.brain_gcd as brain_gcd
-from brain_games.scripts.games.brain_gcd import gcd, get_target_value, main
+from brain_games.games.brain_gcd import gcd, get_target_value, main
 
 
 def test_gcd():

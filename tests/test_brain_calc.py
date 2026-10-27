@@ -1,6 +1,6 @@
+import brain_games.games.brain_calc as brain_calc
 import brain_games.scripts.engine as engine
-import brain_games.scripts.games.brain_calc as brain_calc
-from brain_games.scripts.games.brain_calc import get_target_value, main
+from brain_games.games.brain_calc import get_target_value, main
 
 
 def test_get_target_value_addition(monkeypatch, capsys):

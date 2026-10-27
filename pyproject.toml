@@ -1,9 +1,10 @@
 [project]
 name = "hexlet-code"
 version = "0.1.0"
-description = "Add your description here"
+description = "Brain Games by Hexlet"
+authors = [{ name = "Ievgenii Kurennyi", email = "ikurennyi@gmail.com" }]
 readme = "README.md"
-requires-python = ">=3.15"
+requires-python = ">=3.14"
 dependencies = ["prompt>=0.4.1"]
 
 [dependency-groups]
@@ -17,9 +18,9 @@ build-backend = "hatchling.build"
 packages = ["brain_games"]
 
 [project.scripts]
-brain-games = "brain_games.scripts.games.brain_games:main"
-brain-even = "brain_games.scripts.games.brain_even:main"
-brain-calc = "brain_games.scripts.games.brain_calc:main"
-brain-gcd = "brain_games.scripts.games.brain_gcd:main"
-brain-progression = "brain_games.scripts.games.brain_progression:main"
-brain-prime = "brain_games.scripts.games.brain_prime:main"
+brain-games = "brain_games.games.brain_games:main"
+brain-even = "brain_games.games.brain_even:main"
+brain-calc = "brain_games.games.brain_calc:main"
+brain-gcd = "brain_games.games.brain_gcd:main"
+brain-progression = "brain_games.games.brain_progression:main"
+brain-prime = "brain_games.games.brain_prime:main"

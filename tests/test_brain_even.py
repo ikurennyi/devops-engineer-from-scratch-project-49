@@ -1,5 +1,5 @@
-import brain_games.scripts.games.brain_even as brain_even
-from brain_games.scripts.games.brain_even import is_even_string, main
+import brain_games.games.brain_even as brain_even
+from brain_games.games.brain_even import is_even_string, main
 
 
 def test_is_even_string():

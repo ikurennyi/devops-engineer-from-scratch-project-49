@@ -1,6 +1,6 @@
+import brain_games.games.brain_progression as brain_progression
 import brain_games.scripts.engine as engine
-import brain_games.scripts.games.brain_progression as brain_progression
-from brain_games.scripts.games.brain_progression import (
+from brain_games.games.brain_progression import (
     format_progression,
     generate_progression,
     get_target_value,
