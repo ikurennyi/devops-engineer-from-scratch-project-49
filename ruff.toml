@@ -12,4 +12,4 @@ select = ["B", "E", "F", "I", "C90", "UP", "SIM", "S", "FURB", "RUF"]
 "tests/**" = ["assert"]
 # random в играх — не криптография
 "brain_games/games/*.py" = ["S311"]
-"brain_games/scripts/engine.py" = ["S311"]
+"brain_games/engine.py" = ["S311"]

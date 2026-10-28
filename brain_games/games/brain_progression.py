@@ -1,9 +1,13 @@
 import random
 
-from brain_games.scripts.engine import number_in_range, read_answer_as_int, run
+from brain_games.engine import number_in_range, read_answer_as_int
+
+DESCRIPTION = "What number is missing in the progression?"
 
 PROGRESSION_MIN_LENGTH = 5
 PROGRESSION_MAX_LENGTH = 10
+
+read_answer = read_answer_as_int
 
 
 def generate_progression(start: int, step: int, length: int) -> list[int]:
@@ -18,7 +22,7 @@ def format_progression(progression: list[int], hidden_index: int) -> str:
     return " ".join(parts)
 
 
-def get_target_value():
+def generate_round() -> tuple[str, int]:
     length = random.randrange(
         PROGRESSION_MIN_LENGTH,
         PROGRESSION_MAX_LENGTH + 1,
@@ -27,13 +31,6 @@ def get_target_value():
     step = number_in_range(1, 10)
     progression = generate_progression(start, step, length)
     hidden_index = random.randrange(length)
-    target_value = progression[hidden_index]
-
-    print(f"Question: {format_progression(progression, hidden_index)}")
-
-    return target_value
-
-
-def main():
-    question = "What number is missing in the progression?"
-    run(question, get_target_value, read_answer_as_int)
+    correct_answer = progression[hidden_index]
+    task = format_progression(progression, hidden_index)
+    return task, correct_answer

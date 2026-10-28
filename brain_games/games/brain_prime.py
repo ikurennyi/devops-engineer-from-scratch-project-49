@@ -1,6 +1,8 @@
 import prompt
 
-from brain_games.scripts.engine import number_in_range, run
+from brain_games.engine import number_in_range
+
+DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".'
 
 
 def is_prime(n: int) -> bool:
@@ -18,14 +20,11 @@ def is_prime_string(num: int) -> str:
     return "yes" if is_prime(num) else "no"
 
 
-def get_target_value():
+def generate_round() -> tuple[str, str]:
     number = number_in_range()
-    target_value = is_prime_string(number)
-
-    print(f"Question: {number}")
-    return target_value
+    correct_answer = is_prime_string(number)
+    return str(number), correct_answer
 
 
-def main():
-    question = 'Answer "yes" if given number is prime. Otherwise answer "no".'
-    run(question, get_target_value, lambda: prompt.string("Your answer: "))
+def read_answer():
+    return prompt.string("Your answer: ")

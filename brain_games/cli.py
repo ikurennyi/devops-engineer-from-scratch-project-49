@@ -1,4 +1,4 @@
-from brain_games.scripts.engine import greeting
+from brain_games.engine import greeting
 
 
 def welcome_user():

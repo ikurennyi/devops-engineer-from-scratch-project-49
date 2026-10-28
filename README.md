@@ -2,17 +2,17 @@
 
 [![hexlet-check](https://github.com/ikurennyi/devops-engineer-from-scratch-project-49/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ikurennyi/devops-engineer-from-scratch-project-49/actions)
 
-Погрузитесь в экосистему Python и научитесь настраивать рабочее окружение. Подружитесь с менеджером зависимостей и линтером. Поймете, чем git отличается от GitHub, поработаете с внешними репозиториями. Получите опыт построения архитектуры полноценного приложения и написания чистого кода.
+Проект представляет из себя набор мини-игр (Вычисление операции, Определение четного числа, Поиск наибольшего общего делителя и пр.) запускаемых в терминале.
 
-Учебный проект Хекслета: https://ru.hexlet.io/programs/devops-engineer-from-scratch
-Как это должно работать: https://asciinema.org/a/l40Lrk3midkLmNEOmgZErGnY7
+Цель проекта - столкнуться с небольшим проектом на Python воочию: изучить структуру, подключить зависимости, такие как PyTest для тестирования и Ruff для форматирования и линтинга.
+
+Проект выполнен как тестовое задание от Hexlet по первому пройденному модулю.
 
 ## Стек
 
-- Python
+- Python (3.14)
 
 ## Установка
-
 
 ```bash
 git clone https://github.com/ikurennyi/devops-engineer-from-scratch-project-49.git
@@ -38,25 +38,27 @@ make install
 - [brain-prime](https://asciinema.org/a/TlYbGWVxwVQjBKcO)
 
 
+### Asciinema in live preview:
+
 #### Even:
 
-<script src="https://asciinema.org/a/1269982.js" id="asciicast-1269982" async="true"></script>
+[![asciicast](https://asciinema.org/a/1269982.png)](https://asciinema.org/a/1269982)
 
 #### Calc:
 
-<script src="https://asciinema.org/a/1270100.js" id="asciicast-1270100" async="true"></script>
+[![asciicast](https://asciinema.org/a/1270100.png)](https://asciinema.org/a/1270100)
 
 #### GCD:
 
-<script src="https://asciinema.org/a/1270104.js" id="asciicast-1270104" async="true"></script>
+[![asciicast](https://asciinema.org/a/1270104.png)](https://asciinema.org/a/1270104)
 
 #### Progress:
 
-<script src="https://asciinema.org/a/1270108.js" id="asciicast-1270108" async="true"></script>
+[![asciicast](https://asciinema.org/a/1270108.png)](https://asciinema.org/a/1270108)
 
 #### Prime:
 
-<script src="https://asciinema.org/a/1270114.js" id="asciicast-1270114" async="true"></script>
+[![asciicast](https://asciinema.org/a/1270114.png)](https://asciinema.org/a/1270114)
 
 ---
 

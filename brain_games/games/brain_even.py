@@ -1,21 +1,19 @@
-
 import prompt
 
-from brain_games.scripts.engine import number_in_range, run
+from brain_games.engine import number_in_range
+
+DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".'
 
 
 def is_even_string(num: int) -> str:
     return "yes" if num % 2 == 0 else "no"
 
 
-def get_target_value():
-    number: int = number_in_range()
-    target_value = is_even_string(number)
-
-    print(f"Question: {number}")
-    return target_value
+def generate_round() -> tuple[str, str]:
+    number = number_in_range()
+    correct_answer = is_even_string(number)
+    return str(number), correct_answer
 
 
-def main():
-    question = 'Answer "yes" if the number is even, otherwise answer "no".'
-    run(question, get_target_value, lambda: prompt.string("Your answer: "))
+def read_answer():
+    return prompt.string("Your answer: ")

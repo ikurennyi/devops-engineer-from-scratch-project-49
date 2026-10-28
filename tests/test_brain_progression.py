@@ -1,11 +1,11 @@
+import brain_games.engine as engine
 import brain_games.games.brain_progression as brain_progression
-import brain_games.scripts.engine as engine
 from brain_games.games.brain_progression import (
     format_progression,
     generate_progression,
-    get_target_value,
-    main,
+    generate_round,
 )
+from brain_games.scripts.brain_progression import main
 
 
 def test_generate_progression():
@@ -17,7 +17,7 @@ def test_format_progression():
     assert format_progression(progression, 5) == "5 7 9 11 13 .. 17 19 21 23"
 
 
-def test_get_target_value(monkeypatch, capsys):
+def test_generate_round(monkeypatch):
     def fake_randrange(start, stop=None):
         if stop is not None:
             return 10
@@ -37,9 +37,9 @@ def test_get_target_value(monkeypatch, capsys):
         fake_number_in_range,
     )
 
-    assert get_target_value() == 15
-    out = capsys.readouterr().out
-    assert "Question: 5 7 9 11 13 .. 17 19 21 23" in out
+    task, correct_answer = generate_round()
+    assert correct_answer == 15
+    assert task == "5 7 9 11 13 .. 17 19 21 23"
 
 
 def test_main_three_correct_answers(monkeypatch, capsys):
@@ -52,10 +52,14 @@ def test_main_three_correct_answers(monkeypatch, capsys):
     )
     monkeypatch.setattr(
         brain_progression,
-        "read_answer_as_int",
+        "read_answer",
         lambda: next(answers),
     )
-    monkeypatch.setattr(brain_progression, "get_target_value", lambda: 15)
+    monkeypatch.setattr(
+        brain_progression,
+        "generate_round",
+        lambda: ("5 7 .. 9", 15),
+    )
 
     main()
     out = capsys.readouterr().out
@@ -70,12 +74,16 @@ def test_main_wrong_answer_exits_early(monkeypatch, capsys):
         "string",
         lambda _prompt: next(names),
     )
-    monkeypatch.setattr(brain_progression, "read_answer_as_int", lambda: 1)
-    monkeypatch.setattr(brain_progression, "get_target_value", lambda: 15)
+    monkeypatch.setattr(brain_progression, "read_answer", lambda: 1)
+    monkeypatch.setattr(
+        brain_progression,
+        "generate_round",
+        lambda: ("5 7 .. 9", 15),
+    )
 
     main()
     out = capsys.readouterr().out
-    assert "wrong ansewer" in out
+    assert "wrong answer" in out
     assert "Let's try again, Dan!" in out
     assert "Congratulations" not in out
 
@@ -89,12 +97,16 @@ def test_main_non_integer_answer_exits_early(monkeypatch, capsys):
     )
     monkeypatch.setattr(
         brain_progression,
-        "read_answer_as_int",
+        "read_answer",
         lambda: "not-a-number",
     )
-    monkeypatch.setattr(brain_progression, "get_target_value", lambda: 15)
+    monkeypatch.setattr(
+        brain_progression,
+        "generate_round",
+        lambda: ("5 7 .. 9", 15),
+    )
 
     main()
     out = capsys.readouterr().out
-    assert "'not-a-number' is wrong ansewer" in out
+    assert "'not-a-number' is wrong answer" in out
     assert "Let's try again, Dan!" in out

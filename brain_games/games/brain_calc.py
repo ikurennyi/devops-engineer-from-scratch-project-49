@@ -1,7 +1,9 @@
 import operator as op
 import random
 
-from brain_games.scripts.engine import number_in_range, read_answer_as_int, run
+from brain_games.engine import number_in_range, read_answer_as_int
+
+DESCRIPTION = "What is the result of the expression?"
 
 MATH_OPERATORS = ["+", "-", "*"]
 OPERATIONS = {
@@ -10,19 +12,13 @@ OPERATIONS = {
     "*": op.mul,
 }
 
+read_answer = read_answer_as_int
 
-def get_target_value():
+
+def generate_round() -> tuple[str, int]:
     first_number = number_in_range()
     second_number = number_in_range(0, 10)
     op_symbol = random.choice(MATH_OPERATORS)
-
-    target_value = OPERATIONS[op_symbol](first_number, second_number)
-
-    print(f"Question: {first_number} {op_symbol} {second_number}")
-
-    return target_value
-
-
-def main():
-    question = "What is the result of the expression?"
-    run(question, get_target_value, read_answer_as_int)
+    correct_answer = OPERATIONS[op_symbol](first_number, second_number)
+    task = f"{first_number} {op_symbol} {second_number}"
+    return task, correct_answer

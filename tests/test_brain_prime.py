@@ -2,8 +2,8 @@ import brain_games.games.brain_prime as brain_prime
 from brain_games.games.brain_prime import (
     is_prime,
     is_prime_string,
-    main,
 )
+from brain_games.scripts.brain_prime import main
 
 
 def test_is_prime():
@@ -43,6 +43,6 @@ def test_main_wrong_answer_exits_early(monkeypatch, capsys):
     monkeypatch.setattr(brain_prime, "number_in_range", lambda: 9)
     main()
     out = capsys.readouterr().out
-    assert "wrong ansewer" in out
+    assert "wrong answer" in out
     assert "Let's try again, Dan!" in out
     assert "Congratulations" not in out
