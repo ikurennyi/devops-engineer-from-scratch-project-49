@@ -31,34 +31,26 @@ make install
 * Check [Asciinema section](#asciinema) to see demos.
 
 ## <a id="asciinema">Asciinema demos</a>:
-- [brain-even](https://asciinema.org/a/AkY6B2e9ALNYQLVR)
-- [brain-calc](https://asciinema.org/a/r9GkWdGloRM0PjWk)
-- [brain-gcd](https://asciinema.org/a/XaZv15uZ2YcihCDb)
-- [brain-progression](https://asciinema.org/a/oIKH6wTipkzACXM3)
-- [brain-prime](https://asciinema.org/a/TlYbGWVxwVQjBKcO)
-
-
-### Asciinema in live preview:
 
 #### Even:
 
-[![asciicast](https://asciinema.org/a/1269982.png)](https://asciinema.org/a/1269982)
+[![asciicast](assets/asciinema/brain-even.png)](https://asciinema.org/a/1269982)
 
 #### Calc:
 
-[![asciicast](https://asciinema.org/a/1270100.png)](https://asciinema.org/a/1270100)
+[![asciicast](assets/asciinema/brain-calc.png)](https://asciinema.org/a/1270100)
 
 #### GCD:
 
-[![asciicast](https://asciinema.org/a/1270104.png)](https://asciinema.org/a/1270104)
+[![asciicast](assets/asciinema/brain-gcd.png)](https://asciinema.org/a/1270104)
 
 #### Progress:
 
-[![asciicast](https://asciinema.org/a/1270108.png)](https://asciinema.org/a/1270108)
+[![asciicast](assets/asciinema/brain-progression.png)](https://asciinema.org/a/1270108)
 
 #### Prime:
 
-[![asciicast](https://asciinema.org/a/1270114.png)](https://asciinema.org/a/1270114)
+[![asciicast](assets/asciinema/brain-prime.png)](https://asciinema.org/a/1270114)
 
 ---
 
