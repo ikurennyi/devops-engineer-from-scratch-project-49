@@ -1,3 +1,4 @@
+import brain_games.engine as engine
 import brain_games.games.brain_prime as brain_prime
 from brain_games.games.brain_prime import (
     is_prime,
@@ -22,7 +23,7 @@ def test_is_prime_string():
 def test_main_three_correct_answers(monkeypatch, capsys):
     answers = iter(["John", "yes", "yes", "yes"])
     monkeypatch.setattr(
-        brain_prime.prompt,
+        engine.prompt,
         "string",
         lambda _prompt: next(answers),
     )
@@ -36,7 +37,7 @@ def test_main_three_correct_answers(monkeypatch, capsys):
 def test_main_wrong_answer_exits_early(monkeypatch, capsys):
     answers = iter(["Dan", "yes"])
     monkeypatch.setattr(
-        brain_prime.prompt,
+        engine.prompt,
         "string",
         lambda _prompt: next(answers),
     )

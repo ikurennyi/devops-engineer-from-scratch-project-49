@@ -11,23 +11,17 @@ def test_generate_round_addition(monkeypatch):
     monkeypatch.setattr(brain_calc, "number_in_range", fake_range)
     monkeypatch.setattr(brain_calc.random, "choice", lambda _: "+")
 
-    assert generate_round() == ("4 + 5", 9)
+    assert generate_round() == ("4 + 5", "9")
 
 
 def test_main_three_correct_answers(monkeypatch, capsys):
-    names = iter(["John"])
-    answers = iter([9, 9, 9])
+    answers = iter(["John", "9", "9", "9"])
     monkeypatch.setattr(
         engine.prompt,
         "string",
-        lambda _prompt: next(names),
+        lambda _prompt: next(answers),
     )
-    monkeypatch.setattr(
-        brain_calc,
-        "read_answer",
-        lambda: next(answers),
-    )
-    monkeypatch.setattr(brain_calc, "generate_round", lambda: ("4 + 5", 9))
+    monkeypatch.setattr(brain_calc, "generate_round", lambda: ("4 + 5", "9"))
 
     main()
     out = capsys.readouterr().out
@@ -36,14 +30,13 @@ def test_main_three_correct_answers(monkeypatch, capsys):
 
 
 def test_main_wrong_answer_exits_early(monkeypatch, capsys):
-    names = iter(["Dan"])
+    answers = iter(["Dan", "0"])
     monkeypatch.setattr(
         engine.prompt,
         "string",
-        lambda _prompt: next(names),
+        lambda _prompt: next(answers),
     )
-    monkeypatch.setattr(brain_calc, "read_answer", lambda: 0)
-    monkeypatch.setattr(brain_calc, "generate_round", lambda: ("1 + 1", 5))
+    monkeypatch.setattr(brain_calc, "generate_round", lambda: ("1 + 1", "5"))
 
     main()
     out = capsys.readouterr().out
@@ -53,18 +46,13 @@ def test_main_wrong_answer_exits_early(monkeypatch, capsys):
 
 
 def test_main_non_integer_answer_exits_early(monkeypatch, capsys):
-    names = iter(["Dan"])
+    answers = iter(["Dan", "not-a-number"])
     monkeypatch.setattr(
         engine.prompt,
         "string",
-        lambda _prompt: next(names),
+        lambda _prompt: next(answers),
     )
-    monkeypatch.setattr(
-        brain_calc,
-        "read_answer",
-        lambda: "not-a-number",
-    )
-    monkeypatch.setattr(brain_calc, "generate_round", lambda: ("1 + 1", 5))
+    monkeypatch.setattr(brain_calc, "generate_round", lambda: ("1 + 1", "5"))
 
     main()
     out = capsys.readouterr().out

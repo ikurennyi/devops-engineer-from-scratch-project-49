@@ -14,23 +14,17 @@ def test_generate_round(monkeypatch):
     values = iter([12, 8])
     monkeypatch.setattr(brain_gcd, "number_in_range", lambda: next(values))
 
-    assert generate_round() == ("12 8", 4)
+    assert generate_round() == ("12 8", "4")
 
 
 def test_main_three_correct_answers(monkeypatch, capsys):
-    names = iter(["John"])
-    answers = iter([4, 4, 4])
+    answers = iter(["John", "4", "4", "4"])
     monkeypatch.setattr(
         engine.prompt,
         "string",
-        lambda _prompt: next(names),
+        lambda _prompt: next(answers),
     )
-    monkeypatch.setattr(
-        brain_gcd,
-        "read_answer",
-        lambda: next(answers),
-    )
-    monkeypatch.setattr(brain_gcd, "generate_round", lambda: ("12 8", 4))
+    monkeypatch.setattr(brain_gcd, "generate_round", lambda: ("12 8", "4"))
 
     main()
     out = capsys.readouterr().out
@@ -39,14 +33,13 @@ def test_main_three_correct_answers(monkeypatch, capsys):
 
 
 def test_main_wrong_answer_exits_early(monkeypatch, capsys):
-    names = iter(["Dan"])
+    answers = iter(["Dan", "0"])
     monkeypatch.setattr(
         engine.prompt,
         "string",
-        lambda _prompt: next(names),
+        lambda _prompt: next(answers),
     )
-    monkeypatch.setattr(brain_gcd, "read_answer", lambda: 0)
-    monkeypatch.setattr(brain_gcd, "generate_round", lambda: ("1 1", 5))
+    monkeypatch.setattr(brain_gcd, "generate_round", lambda: ("1 1", "5"))
 
     main()
     out = capsys.readouterr().out
@@ -56,14 +49,13 @@ def test_main_wrong_answer_exits_early(monkeypatch, capsys):
 
 
 def test_main_non_integer_answer_exits_early(monkeypatch, capsys):
-    names = iter(["Dan"])
+    answers = iter(["Dan", "not-a-number"])
     monkeypatch.setattr(
         engine.prompt,
         "string",
-        lambda _prompt: next(names),
+        lambda _prompt: next(answers),
     )
-    monkeypatch.setattr(brain_gcd, "read_answer", lambda: "not-a-number")
-    monkeypatch.setattr(brain_gcd, "generate_round", lambda: ("1 1", 5))
+    monkeypatch.setattr(brain_gcd, "generate_round", lambda: ("1 1", "5"))
 
     main()
     out = capsys.readouterr().out

@@ -38,27 +38,21 @@ def test_generate_round(monkeypatch):
     )
 
     task, correct_answer = generate_round()
-    assert correct_answer == 15
+    assert correct_answer == "15"
     assert task == "5 7 9 11 13 .. 17 19 21 23"
 
 
 def test_main_three_correct_answers(monkeypatch, capsys):
-    names = iter(["John"])
-    answers = iter([15, 15, 15])
+    answers = iter(["John", "15", "15", "15"])
     monkeypatch.setattr(
         engine.prompt,
         "string",
-        lambda _prompt: next(names),
-    )
-    monkeypatch.setattr(
-        brain_progression,
-        "read_answer",
-        lambda: next(answers),
+        lambda _prompt: next(answers),
     )
     monkeypatch.setattr(
         brain_progression,
         "generate_round",
-        lambda: ("5 7 .. 9", 15),
+        lambda: ("5 7 .. 9", "15"),
     )
 
     main()
@@ -68,17 +62,16 @@ def test_main_three_correct_answers(monkeypatch, capsys):
 
 
 def test_main_wrong_answer_exits_early(monkeypatch, capsys):
-    names = iter(["Dan"])
+    answers = iter(["Dan", "1"])
     monkeypatch.setattr(
         engine.prompt,
         "string",
-        lambda _prompt: next(names),
+        lambda _prompt: next(answers),
     )
-    monkeypatch.setattr(brain_progression, "read_answer", lambda: 1)
     monkeypatch.setattr(
         brain_progression,
         "generate_round",
-        lambda: ("5 7 .. 9", 15),
+        lambda: ("5 7 .. 9", "15"),
     )
 
     main()
@@ -89,21 +82,16 @@ def test_main_wrong_answer_exits_early(monkeypatch, capsys):
 
 
 def test_main_non_integer_answer_exits_early(monkeypatch, capsys):
-    names = iter(["Dan"])
+    answers = iter(["Dan", "not-a-number"])
     monkeypatch.setattr(
         engine.prompt,
         "string",
-        lambda _prompt: next(names),
-    )
-    monkeypatch.setattr(
-        brain_progression,
-        "read_answer",
-        lambda: "not-a-number",
+        lambda _prompt: next(answers),
     )
     monkeypatch.setattr(
         brain_progression,
         "generate_round",
-        lambda: ("5 7 .. 9", 15),
+        lambda: ("5 7 .. 9", "15"),
     )
 
     main()

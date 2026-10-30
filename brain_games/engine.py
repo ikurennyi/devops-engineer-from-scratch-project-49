@@ -20,14 +20,6 @@ def number_in_range(start: int = 0, end: int = 100) -> int:
     return random.randrange(start, end)
 
 
-def read_answer_as_int() -> int | str:
-    user_input = input("Your answer: ")
-    try:
-        return int(user_input)
-    except ValueError:
-        return user_input
-
-
 def run(game) -> None:
     user_name = greeting(game.DESCRIPTION)
     correct_answers = 0
@@ -35,7 +27,7 @@ def run(game) -> None:
     while correct_answers != ROUNDS_TO_WIN:
         task, correct_answer = game.generate_round()
         print(f"Question: {task}")
-        answer = game.read_answer()
+        answer = cast(str, prompt.string("Your answer: "))
 
         if answer == correct_answer:
             correct_answers += 1

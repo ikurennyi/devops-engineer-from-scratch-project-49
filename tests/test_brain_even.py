@@ -1,3 +1,4 @@
+import brain_games.engine as engine
 import brain_games.games.brain_even as brain_even
 from brain_games.games.brain_even import generate_round, is_even_string
 from brain_games.scripts.brain_even import main
@@ -16,7 +17,7 @@ def test_generate_round(monkeypatch):
 def test_main_three_correct_answers(monkeypatch, capsys):
     answers = iter(["John", "yes", "yes", "yes"])
     monkeypatch.setattr(
-        brain_even.prompt,
+        engine.prompt,
         "string",
         lambda _prompt: next(answers),
     )
@@ -30,7 +31,7 @@ def test_main_three_correct_answers(monkeypatch, capsys):
 def test_main_wrong_answer_exits_early(monkeypatch, capsys):
     answers = iter(["Dan", "yes"])
     monkeypatch.setattr(
-        brain_even.prompt,
+        engine.prompt,
         "string",
         lambda _prompt: next(answers),
     )

@@ -1,5 +1,3 @@
-import prompt
-
 from brain_games.engine import number_in_range
 
 DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".'
@@ -13,7 +11,3 @@ def generate_round() -> tuple[str, str]:
     number = number_in_range()
     correct_answer = is_even_string(number)
     return str(number), correct_answer
-
-
-def read_answer():
-    return prompt.string("Your answer: ")
